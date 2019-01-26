@@ -5,7 +5,8 @@ import ShowBook from '@/components/ShowBook'
 import CreateBook from '@/components/CreateBook'
 import EditBook from '@/components/EditBook'
 
-import MovieList from '@/components/MovieList'
+import movieList from '@/components/movieList'
+import signIn from '@/components/signIn';
 Vue.use(Router)
 
 export default new Router({
@@ -32,8 +33,13 @@ export default new Router({
     },
     {
       path: '/',
-      name: 'MovieList',
-      component: MovieList
+      name: 'singIn',
+      component: signIn
+    },
+    {
+      path: '/movies',
+      name: 'movieList',
+      component: movieList
     },
   ]
 })

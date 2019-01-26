@@ -1,6 +1,6 @@
 <template>
     <div class="movieList">
-        <h2>电影列表页test</h2>       
+        <h2>电影列表页</h2>       
         <b-table striped hover :items="movieList" :fields="fields">
         </b-table>
     </div>
