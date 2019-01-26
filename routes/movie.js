@@ -2,14 +2,15 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var Book = require('../models/Book.js');
+var Movie = require('../models/Movie.js');
 
 /* GET ALL BOOKS */
-// router.get('/', function(req, res, next) {
-//   Book.find(function (err, products) {
-//     if (err) return next(err);
-//     res.json(products);
-//   });
-// });
+router.get('/', function(req, res, next) {
+  Movie.find(function (err, movies) {
+    if (err) return next(err);
+    res.json(movies);
+  });
+});
 
 /* GET SINGLE BOOK BY ID */
 router.get('/:id', function(req, res, next) {

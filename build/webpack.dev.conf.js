@@ -13,6 +13,19 @@ const portfinder = require('portfinder')
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
 
+
+const TEST_SERVER = {
+  target: 'http://localhost:3000/',
+  pathRewrite: {'^/mevn_stack': ''},
+  changeOrigin: true,
+  // onProxyReq: function(proxyReq, req) {
+  //     if (!req.headers.cookie || req.headers.cookie.indexOf('do-not-rewrite-cookie=1') === -1) {
+  //         proxyReq.setHeader('cookie', config.cookie || '');
+  //     }
+  // }
+};
+
+
 const devWebpackConfig = merge(baseWebpackConfig, {
   module: {
     rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCSS: true })
@@ -32,13 +45,17 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     contentBase: false, // since we use CopyWebpackPlugin.
     compress: true,
     host: HOST || config.dev.host,
+    // host: '0.0.0.0',
     port: PORT || config.dev.port,
     open: config.dev.autoOpenBrowser,
     overlay: config.dev.errorOverlay
       ? { warnings: false, errors: true }
       : false,
     publicPath: config.dev.assetsPublicPath,
-    proxy: config.dev.proxyTable,
+    // proxy: config.dev.proxyTable,
+    proxy: {
+      '/mevn_stack/': TEST_SERVER,
+    },
     quiet: true, // necessary for FriendlyErrorsPlugin
     watchOptions: {
       poll: config.dev.poll,
