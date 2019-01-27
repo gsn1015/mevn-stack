@@ -8,7 +8,7 @@
                 <Input v-model="formSingIn.password"/>
             </FormItem>
             <FormItem>
-                <Button @click="onSubmit" type="primary">登录</Button>
+                <Button @click="onSubmit" type="primary">注册</Button>
             </FormItem>
         </Form>
     </div>
@@ -30,12 +30,11 @@ export default {
     },
     methods: {
         onSubmit() {
-            userApi.login({
+            userApi.register({
                 name: this.formSingIn.name,
                 password: this.formSingIn.password,
             }).then((res)=> {
                 console.log(res,"res");
-                this.$router.push('/index')
             })
         },
         onReset() {

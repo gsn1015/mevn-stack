@@ -4,9 +4,9 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 
-var book = require('./routes/book');
-var movie = require('./routes/movie');
-var user = require('./routes/user');
+// var book = require('./routes/book');
+// var movie = require('./routes/movie');
+// var user = require('./routes/user');
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 mongoose.connect('mongodb://localhost/mevn-stack', { promiseLibrary: require('bluebird') })
@@ -19,15 +19,19 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({'extended':'false'}));
 app.use(express.static(path.join(__dirname, 'dist')));
-app.use('/books', express.static(path.join(__dirname, 'dist')));
-app.use('/book', book);
-
-app.use('/movies', express.static(path.join(__dirname, 'dist')));
-app.use('/movie', movie);
+app.set('view engine', 'html');
 
 
-// app.use('/users', express.static(path.join(__dirname, 'dist')));
-app.use('/user', user);
+// app.use('/books', express.static(path.join(__dirname, 'dist')));
+// app.use('/book', book);
+
+// app.use('/movies', express.static(path.join(__dirname, 'dist')));
+// app.use('/movie', movie);
+
+// app.use('/user', user);
+
+
+require('./routes/router')(app)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -44,13 +48,10 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  // next(err);
 });
 
-app.set('view engine', 'html');
+
+
 
 module.exports = app;
-
-
-
-

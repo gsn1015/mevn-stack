@@ -5,7 +5,12 @@ const apis = [
     {
         name: 'login',
         url: `/mevn_stack/user/login/`,
-        method: 'get'
+        method: 'post'
+    },
+    {
+        name: 'register',
+        url: `/mevn_stack/user/register/`,
+        method: 'post'
     },
 
 ];

@@ -28,7 +28,7 @@ export default {
         },
         getMovieList() {           
             movieApi.getMovieList().then((res)=> {
-                this.movieList = res;
+                this.movieList = res.data;
             })
         },
     }

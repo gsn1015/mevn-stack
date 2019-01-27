@@ -1,12 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import BookList from '@/components/BookList'
 import ShowBook from '@/components/ShowBook'
-import CreateBook from '@/components/CreateBook'
-import EditBook from '@/components/EditBook'
 
 import movieList from '@/components/movieList'
 import signIn from '@/components/signIn';
+import signUp from '@/components/signUp';
+import index from '@/components/index';
 Vue.use(Router)
 
 export default new Router({
@@ -22,24 +21,24 @@ export default new Router({
       component: ShowBook
     },
     {
-      path: '/add-book',
-      name: 'CreateBook',
-      component: CreateBook
-    },
-    {
-      path: '/edit-book/:id',
-      name: 'EditBook',
-      component: EditBook
-    },
-    {
       path: '/',
-      name: 'singIn',
+      name: 'signIn',
       component: signIn
     },
     {
       path: '/movies',
       name: 'movieList',
       component: movieList
+    },
+    {
+      path: '/signUp',
+      name: 'signUp',
+      component: signUp
+    },
+    {
+      path: '/index',
+      name: 'index',
+      component: index
     },
   ]
 })
